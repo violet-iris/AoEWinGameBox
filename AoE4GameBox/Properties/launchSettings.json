@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "AoE4GameBox (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "AoE4GameBox (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
