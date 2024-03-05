@@ -1,4 +1,6 @@
-﻿using Microsoft.UI.Xaml;
+﻿using AoE4GameBox.Tools;
+using Microsoft.UI.Windowing;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -11,6 +13,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -41,8 +44,17 @@ namespace AoE4GameBox
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
+            Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("zh-CN"); // 设置默认的区域设置
+            Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("zh-CN");
+            //Logger.Log("1.OnStartup被触发");
+            Logger.Info("************************* Log Start *************************");
+
             m_window = new MainWindow();
             m_window.Activate();
+
+            OverlappedPresenter windowPresenter = (OverlappedPresenter)m_window.AppWindow.Presenter;
+            windowPresenter.IsAlwaysOnTop = true;
+            windowPresenter.SetBorderAndTitleBar(false, false);
         }
 
         private Window m_window;
