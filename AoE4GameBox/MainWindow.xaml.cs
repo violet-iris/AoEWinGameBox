@@ -1,4 +1,5 @@
 using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
@@ -20,6 +21,7 @@ namespace AoE4GameBox
 
         private const int WS_EX_TRANSPARENT = 0x00000020;
         private const int GWL_EXSTYLE = -20;
+        private const int GWL_STYLE = -16;
 
         [DllImport("user32.dll")]
         private static extern int GetWindowLong(IntPtr hwnd, int index);
@@ -29,61 +31,38 @@ namespace AoE4GameBox
 
         public MainWindow()
         {
-            this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 600));
+            //this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 600));
             this.InitializeComponent();
-
-            IntPtr hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            //int extendedStyle = GetWindowLong(hwnd, (-16));
-            int extendedStyle = 825566;
-            Debug.WriteLine($"extendedStyle: {extendedStyle}");
-            //_ = SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT);
-            _ = SetWindowLong(hwnd, GWL_EXSTYLE, 0x80020);
-            //hWndMain = WinRT.Interop.WindowNative.GetWindowHandle(this);
-            //Microsoft.UI.WindowId myWndId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWndMain);
-            //_apw = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(myWndId);
-            //_presenter = _apw.Presenter as Microsoft.UI.Windowing.OverlappedPresenter;
-            //_presenter.IsAlwaysOnTop = true;
+            //SetWindowTransparent();
         }
 
-        //// Import Windows API functions
-        //[DllImport("user32.dll", SetLastError = true)]
-        //[return: MarshalAs(UnmanagedType.Bool)]
-        //private static extern bool SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-
-        //[DllImport("user32.dll", SetLastError = true)]
-        //private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-        //// Constants for window styles
-        //private const int GWL_EXSTYLE = -20;
-        //private const int WS_EX_TRANSPARENT = 0x00000020;
-
-        //// Set window style to allow mouse penetration
-        //private void SetWindowExTransparent()
-        //{
-        //    var hwnd = AppWindow.DispatcherQueue;
-        //    hwnd.TryEnqueue(() =>
-        //    {
-        //        var hWnd = GetWindowHandle();
-        //        if (hWnd != IntPtr.Zero)
-        //        {
-        //            int exStyle = GetWindowLong(hWnd, GWL_EXSTYLE);
-        //            exStyle |= WS_EX_TRANSPARENT;
-        //            SetWindowLong(hWnd, GWL_EXSTYLE, exStyle);
-        //        }
-        //    });
-        //}
-
-        //// Get handle of the current window
-        //private IntPtr GetWindowHandle()
-        //{
-        //    var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
-        //    return hWnd;
-        //}
-
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        public void SetWindowTransparent()
         {
-            myButton.Content = "Clicked";
+            IntPtr hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            int extendedStyle = GetWindowLong(hwnd, GWL_STYLE);
+            //int extendedStyle = 825566;
+            _ = SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | WS_EX_TRANSPARENT);
+            //_ = SetWindowLong(hwnd, GWL_EXSTYLE, 0x80020);
         }
+
+        public void SetWindowNormal()
+        {
+            IntPtr hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            int extendedStyle = GetWindowLong(hwnd, GWL_STYLE);
+            _ = SetWindowLong(hwnd, GWL_EXSTYLE, extendedStyle | ~WS_EX_TRANSPARENT);
+        }
+
+        private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            var selectedItem = (NavigationViewItem)args.SelectedItem;
+            if ((string)selectedItem.Tag == "BlankPage1") contentFrame.Navigate(typeof(BlankPage1));
+            else if ((string)selectedItem.Tag == "BlankPage2") contentFrame.Navigate(typeof(BlankPage2));
+            else if ((string)selectedItem.Tag == "BlankPage3") contentFrame.Navigate(typeof(BlankPage3));
+            else if ((string)selectedItem.Tag == "TestPage") contentFrame.Navigate(typeof(TestPage));
+        }
+
+
+
 
         ///// <summary>
         ///// ºÏ≤‚Õ¯’æ¡¨Õ®–‘

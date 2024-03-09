@@ -52,9 +52,9 @@ namespace AoE4GameBox
             m_window = new MainWindow();
             m_window.Activate();
 
-            OverlappedPresenter windowPresenter = (OverlappedPresenter)m_window.AppWindow.Presenter;
-            windowPresenter.IsAlwaysOnTop = true;
-            windowPresenter.SetBorderAndTitleBar(false, false);
+            //OverlappedPresenter windowPresenter = (OverlappedPresenter)m_window.AppWindow.Presenter;
+            //windowPresenter.IsAlwaysOnTop = true;
+            //windowPresenter.SetBorderAndTitleBar(false, false);
         }
 
         private Window m_window;
