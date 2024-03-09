@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AoE4GameBox.Pages.PageNetCheck"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AoE4GameBox.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <StackPanel>
+            <TextBlock Text="网络测试页" />
+            <Button x:Name="BtnCheckNet" Click="BtnCheckNet_Click" 
+                        Content="检测API连通性" />
+            <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True"
+                     MaxHeight="60" Name="TextBoxCheckNetworkResult"/>
+            <Button x:Name="BtnCheckLocalNic" Click="BtnCheckLocalNic_Click"
+                        Content="检测本地网卡" />
+            <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True"
+                     MaxHeight="100"
+                         Name="textbox_check_localhost_result"/>
+            <Button Click="GetIPAddress_Click" Content="获取IP地址" />
+            <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True" MaxHeight="60"
+                         Name="TextBoxCheckIPResult"/>
+            <Button Click="RefreshDNSCacheButton_Click" Content="刷新DNS缓存" />
+            <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True"
+                     MaxHeight="60"
+                         Name="TextBoxRefreshDNSCacheResult"/>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

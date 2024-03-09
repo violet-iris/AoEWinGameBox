@@ -16,14 +16,14 @@ using Windows.Foundation.Collections;
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace AoE4GameBox
+namespace AoE4GameBox.Pages
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class BlankPage2 : Page
+    public sealed partial class PageOSDSetting : Page
     {
-        public BlankPage2()
+        public PageOSDSetting()
         {
             this.InitializeComponent();
         }

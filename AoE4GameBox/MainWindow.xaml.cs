@@ -1,3 +1,4 @@
+using AoE4GameBox.Pages;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
@@ -55,64 +56,10 @@ namespace AoE4GameBox
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var selectedItem = (NavigationViewItem)args.SelectedItem;
-            if ((string)selectedItem.Tag == "BlankPage1") contentFrame.Navigate(typeof(BlankPage1));
-            else if ((string)selectedItem.Tag == "BlankPage2") contentFrame.Navigate(typeof(BlankPage2));
-            else if ((string)selectedItem.Tag == "BlankPage3") contentFrame.Navigate(typeof(BlankPage3));
-            else if ((string)selectedItem.Tag == "TestPage") contentFrame.Navigate(typeof(TestPage));
+            if ((string)selectedItem.Tag == "PageMain") contentFrame.Navigate(typeof(PageUserInfo));
+            else if ((string)selectedItem.Tag == "PageOSD") contentFrame.Navigate(typeof(PageOSDSetting));
+            else if ((string)selectedItem.Tag == "PageRandom") contentFrame.Navigate(typeof(PageRandom));
+            else if ((string)selectedItem.Tag == "PageNetCheck") contentFrame.Navigate(typeof(PageNetCheck));
         }
-
-
-
-
-        ///// <summary>
-        ///// 检测网站连通性
-        ///// </summary>
-        //private void BtnCheckNet_Click(object sender, RoutedEventArgs e)
-        //{
-        //    BtnCheckNet_Click();
-        //}
-
-        ///// <summary>
-        ///// 检测网站连通性
-        ///// </summary>
-        //private async void BtnCheckNet_Click()
-        //{
-        //    TextBoxCheckNetworkResult.Text = "{Properties.i18n.Resources.network_diagnostics}\n";
-
-        //    var host = "aoe4world.com";
-        //    var msg = await NetCheck.CheckHostReachable(host);
-        //    TextBoxCheckNetworkResult.Text += $"{msg}\n";
-
-        //    host = "aoe4cn.com";
-        //    msg = await NetCheck.CheckHostReachable(host);
-        //    TextBoxCheckNetworkResult.Text += $"{msg}";
-        //}
-
-        ///// <summary>
-        ///// 检测本地网络接口
-        ///// </summary>
-        //private void BtnCheckLocalNic_Click(object sender, RoutedEventArgs e)
-        //{
-        //    var msg = NetCheck.CheckLocalNic();
-        //    this.textbox_check_localhost_result.Text = msg.ToString();
-        //}
-
-        ///// <summary>
-        ///// 获取本机的IP地址
-        ///// </summary>
-        //private async void GetIPAddress_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.TextBoxCheckIPResult.Text = await NetCheck.GetIPAddress();
-        //}
-
-        ///// <summary>
-        ///// 按钮点击事件：刷新DNS缓存
-        ///// </summary>
-        ///// <param name="sender"></param>
-        ///// <param name="e"></param>
-        //private void RefreshDNSCacheButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.TextBoxRefreshDNSCacheResult.Text = NetCheck.FlushDNSCache();
-        //}
     }
 }
