@@ -22,7 +22,7 @@ namespace AoE4GameBox.Tools
             Debug.WriteLine(message);
 
             // 打印日志存放地址
-            Debug.WriteLine($"Logs directory: {logsDirectory}");
+            //Debug.WriteLine($"Logs directory: {logsDirectory}");
 
             // 如果logs文件夹不存在，则创建它
             if (!Directory.Exists(logsDirectory))

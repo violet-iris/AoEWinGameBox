@@ -13,7 +13,15 @@
         <winuiex:TransparentTintBackdrop />
     </Window.SystemBackdrop>-->
     <NavigationView SelectionChanged="NavigationView_SelectionChanged"
-                    x:Name="nvSample" Header="header" PaneTitle="AppError" >
+                    x:Name="nvSample">
+        <NavigationView.Header>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="帝国时代4游戏盒子（技术预览）" VerticalAlignment="Center" />
+            </StackPanel>
+        </NavigationView.Header>
+        <NavigationView.PaneTitle>
+            AoE4GameBox
+        </NavigationView.PaneTitle>
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="ContactInfo" Content="玩家信息" Tag="PageMain" />
             <NavigationViewItem Icon="Play" Content="浮窗" Tag="PageOSD" />

@@ -33,8 +33,9 @@ namespace AoE4GameBox
         public MainWindow()
         {
             //this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 600));
-            this.InitializeComponent();
             //SetWindowTransparent();
+            this.InitializeComponent();
+            contentFrame.Navigate(typeof(PageUserInfo));
         }
 
         public void SetWindowTransparent()
@@ -56,10 +57,14 @@ namespace AoE4GameBox
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var selectedItem = (NavigationViewItem)args.SelectedItem;
-            if ((string)selectedItem.Tag == "PageMain") contentFrame.Navigate(typeof(PageUserInfo));
-            else if ((string)selectedItem.Tag == "PageOSD") contentFrame.Navigate(typeof(PageOSDSetting));
-            else if ((string)selectedItem.Tag == "PageRandom") contentFrame.Navigate(typeof(PageRandom));
-            else if ((string)selectedItem.Tag == "PageNetCheck") contentFrame.Navigate(typeof(PageNetCheck));
+            if ((string)selectedItem.Tag == "PageMain")
+                contentFrame.Navigate(typeof(PageUserInfo));
+            else if ((string)selectedItem.Tag == "PageOSD")
+                contentFrame.Navigate(typeof(PageOSDSetting));
+            else if ((string)selectedItem.Tag == "PageRandom")
+                contentFrame.Navigate(typeof(PageRandom));
+            else if ((string)selectedItem.Tag == "PageNetCheck")
+                contentFrame.Navigate(typeof(PageNetCheck));
         }
     }
 }
