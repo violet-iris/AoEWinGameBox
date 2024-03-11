@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="AoE4GameBox.Pages.PageAbout"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:AoE4GameBox.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="帝国时代4 游戏工具箱 技术测试"/>
+        </Border>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="本软件处于测试阶段，由AoE4CN社区提供支持"/>
+        </Border>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text=""/>
+        </Border>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Copyright © 2023-2024"/>
+        </Border>
+        <HyperlinkButton HorizontalAlignment="Center" VerticalAlignment="Center"
+                         Content="aoe4cn.com" NavigateUri="https://www.aoe4cn.com" />
+        <FontIcon Glyph="&#xEB52;" Foreground="#C72335" />
+    </StackPanel>
+</Page>

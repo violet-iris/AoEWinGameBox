@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     xmlns:winuiex="using:WinUIEx"
+    Title="帝国时代4游戏盒子（技术预览）"
     >
     <!--<Window.SystemBackdrop>
         <winuiex:TransparentTintBackdrop />
@@ -28,6 +29,11 @@
             <NavigationViewItem Icon="Refresh" Content="随机地图/文明" Tag="PageRandom" />
             <NavigationViewItem Icon="Stop" Content="网络检测" Tag="PageNetCheck" />
         </NavigationView.MenuItems>
+        
+        <NavigationView.FooterMenuItems>
+            <NavigationViewItem Icon="ContactInfo" Content="关于" Tag="PageAbout"/>
+        </NavigationView.FooterMenuItems>
+        
         <Frame x:Name="contentFrame"/>
     </NavigationView>
     <!--<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

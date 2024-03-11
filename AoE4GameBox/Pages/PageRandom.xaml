@@ -6,10 +6,33 @@
     xmlns:local="using:AoE4GameBox.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Grid>
-        <TextBlock Text="3"></TextBlock>
+    mc:Ignorable="d">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <!--left-->
+        <StackPanel Margin="0,20,0,20" Grid.Column="0">
+            <Border Margin="5" Padding="5" Height="175">
+                <Image x:Name="img_random_civ" Source="ms-appx:///Assets/Images/flags/Chinese.png" Stretch="Uniform"
+                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <TextBlock x:Name="text_civ" Text="随机文明" Margin="5" Padding="5"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Button x:Name="btn_random_civ"  HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Click="BtnRandomCivClick" Content="随机文明" />
+        </StackPanel>
+        <!--right-->
+        <StackPanel Margin="0,20,0,20" Grid.Column="1">
+            <Border Margin="5" Padding="5" Height="175">
+                <Image x:Name="img_random_map" Source="ms-appx:///Assets/Images/maps/Mega_Random.png" Stretch="Uniform"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <TextBlock x:Name="text_map" Text="随机地图" Margin="5" Padding="5"
+                       HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <Button x:Name="btn_random_map" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Click="BtnRandomMapClick" Content="随机地图" />
+        </StackPanel>
     </Grid>
 </Page>

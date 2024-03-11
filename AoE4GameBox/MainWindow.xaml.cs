@@ -4,6 +4,7 @@ using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using Windows.UI.ApplicationSettings;
 using WinUIEx;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -35,6 +36,7 @@ namespace AoE4GameBox
             //this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 600));
             //SetWindowTransparent();
             this.InitializeComponent();
+            //this.AppWindow.SetIcon("Assets/Images/A.ico");
             contentFrame.Navigate(typeof(PageUserInfo));
         }
 
@@ -57,6 +59,7 @@ namespace AoE4GameBox
         private void NavigationView_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             var selectedItem = (NavigationViewItem)args.SelectedItem;
+
             if ((string)selectedItem.Tag == "PageMain")
                 contentFrame.Navigate(typeof(PageUserInfo));
             else if ((string)selectedItem.Tag == "PageOSD")
@@ -65,6 +68,13 @@ namespace AoE4GameBox
                 contentFrame.Navigate(typeof(PageRandom));
             else if ((string)selectedItem.Tag == "PageNetCheck")
                 contentFrame.Navigate(typeof(PageNetCheck));
+            else if ((string)selectedItem.Tag == "PageAbout")
+                contentFrame.Navigate(typeof(PageAbout));
+
+            if (args.IsSettingsSelected)
+            {
+                contentFrame.Navigate(typeof(PageSetting));
+            }
         }
     }
 }

@@ -13,18 +13,19 @@
             <Button x:Name="BtnCheckNet" Click="BtnCheckNet_Click" 
                         Content="检测API连通性" />
             <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True"
-                     MaxHeight="60" Name="TextBoxCheckNetworkResult"/>
+                     MaxHeight="100" Name="TextBoxCheckNetworkResult"/>
             <Button x:Name="BtnCheckLocalNic" Click="BtnCheckLocalNic_Click"
                         Content="检测本地网卡" />
             <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True"
                      MaxHeight="100"
                          Name="textbox_check_localhost_result"/>
             <Button Click="GetIPAddress_Click" Content="获取IP地址" />
-            <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True" MaxHeight="60"
+            <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True"
+                     MaxHeight="100"
                          Name="TextBoxCheckIPResult"/>
             <Button Click="RefreshDNSCacheButton_Click" Content="刷新DNS缓存" />
             <TextBox Margin="5" TextWrapping="Wrap" IsReadOnly="True"
-                     MaxHeight="60"
+                     MaxHeight="100"
                          Name="TextBoxRefreshDNSCacheResult"/>
         </StackPanel>
     </ScrollViewer>
