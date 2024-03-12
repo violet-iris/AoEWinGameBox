@@ -6,10 +6,31 @@
     xmlns:local="using:AoE4GameBox.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    <Grid>
-        <TextBlock Text="1"></TextBlock>
-    </Grid>
+    mc:Ignorable="d">
+    <StackPanel Margin="20">
+        <TextBlock x:Name="text_player_name" Text="玩家昵称"/>
+        <TextBlock x:Name="text_player_id" Text="玩家档案编号 (游戏ID)" />
+        <TextBlock x:Name="text_player_steam_id" Text="Steam3 ID (64bit DEC)" />
+        <TextBox x:Name="TextBoxPlayerId">
+            <!--<TextBox.ToolTip>
+                <StackPanel>
+                    <TextBlock Text="可以查询到任一玩家的方式 推荐使用玩家档案编号" FontWeight="Bold" />
+                    <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,4"/>
+                    <TextBlock FontWeight="Bold" Text="玩家档案编号（精确查找+快）"/>
+                    <TextBlock FontStyle="Italic" Text="Player Profile ID：是AoE4world站点提供的每一位玩家的独立固定ID，目前译作玩家档案编号" />
+                    <TextBlock FontWeight="Bold" Text="Steam ID（精确查找+慢）"/>
+                    <TextBlock FontStyle="Italic" Text="Steam ID码（一般为17位）" />
+                    <TextBlock FontWeight="Bold" Text="玩家昵称（模糊查找）"/>
+                    <TextBlock FontStyle="Italic" Text="游戏中当前的昵称（实际上是Steam昵称），如果重名则查询不一定准确" />
+                </StackPanel>
+            </TextBox.ToolTip>-->
+            <TextBox.Text>11784459</TextBox.Text>
+        </TextBox>
+        <Button x:Name="BtnSearchPlayer" Click="BtnSearchPlayer_Click" 
+                Content="搜索玩家" />
+        <!--<Button x:Name="BtnToNetCheck" Click="BtnToNetCheck_Click" 
+                Content="检测API站点连通性" />-->
+        <!--<Button x:Name="btn_bind" Click="btn_bind_Click" 
+                Content="绑定玩家" />-->
+    </StackPanel>
 </Page>

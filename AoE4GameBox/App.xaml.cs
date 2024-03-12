@@ -54,6 +54,7 @@ namespace AoE4GameBox
             Logger.Info("************************* Log Start *************************");
 
             m_window = new MainWindow();
+            m_window.SetIcon("Assets/Images/A.ico");
             m_window.Activate();
 
             //OverlappedPresenter windowPresenter = (OverlappedPresenter)m_window.AppWindow.Presenter;
