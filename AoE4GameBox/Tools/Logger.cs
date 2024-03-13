@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using Windows.Storage;
 
 namespace AoE4GameBox.Tools
 {

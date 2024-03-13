@@ -12,7 +12,7 @@
 
         // Default constructor
         public Player()
-        { 
+        {
             this.Name = "Default";
             this.ProfileId = 0;
             this.SteamId = "Default";
