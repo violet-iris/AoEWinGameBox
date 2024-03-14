@@ -1,6 +1,6 @@
 ﻿namespace AoE4GameBox.Model
 {
-    internal class Player
+    public class Player
     {
         public string Name { get; set; } = "Default"; // 玩家名
         public int ProfileId { get; set; } = 0; // Profile ID

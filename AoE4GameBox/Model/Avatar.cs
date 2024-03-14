@@ -1,6 +1,6 @@
 ﻿namespace AoE4GameBox.Model
 {
-    internal class Avatar
+    public class Avatar
     {
         public string Small { get; set; }
         public string Medium { get; set; }
