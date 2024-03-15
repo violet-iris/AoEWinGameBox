@@ -6,11 +6,12 @@
     xmlns:local="using:AoE4GameBox.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=local:PageUserInfoViewModel}"
     mc:Ignorable="d">
     <StackPanel Margin="20">
-        <TextBlock x:Name="text_player_name" Text="玩家昵称"/>
-        <TextBlock x:Name="text_player_id" Text="玩家档案编号 (游戏ID)" />
-        <TextBlock x:Name="text_player_steam_id" Text="Steam3 ID (64bit DEC)" />
+        <TextBlock x:Name="text_player_name" Text="{Binding PlayerName}"/>
+        <TextBlock x:Name="text_player_id" Text="{Binding PlayerId}" />
+        <TextBlock x:Name="text_player_steam_id" Text="{Binding PlayerSteamId}" />
         <TextBox x:Name="TextBoxPlayerId">
             <!--<TextBox.ToolTip>
                 <StackPanel>
