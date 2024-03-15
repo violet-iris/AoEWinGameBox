@@ -2,19 +2,15 @@ using AoE4GameBox.Tools;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace AoE4GameBox.Pages
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class PageNetCheck : Page
     {
         public PageNetCheck()
         {
             this.InitializeComponent();
+            // 开启页面缓存
+            this.NavigationCacheMode = Microsoft.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
         /// <summary>
         /// 检测网站连通性

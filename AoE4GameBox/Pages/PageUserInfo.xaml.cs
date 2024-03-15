@@ -2,19 +2,19 @@ using AoE4GameBox.Model;
 using AoE4GameBox.Tools;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Xml.Linq;
 
 namespace AoE4GameBox.Pages
 {
     public sealed partial class PageUserInfo : Page
     {
-        private PageUserInfoViewModel VMUserInfo = new PageUserInfoViewModel();
+        private PageUserInfoViewModel VMUserInfo = new();
 
         public PageUserInfo()
         {
             this.InitializeComponent();
+            // 开启页面缓存
+            this.NavigationCacheMode = Microsoft.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            // 绑定数据
             this.DataContext = VMUserInfo;
         }
 
@@ -30,10 +30,6 @@ namespace AoE4GameBox.Pages
                 VMUserInfo.PlayerName = $"玩家昵称 : {PlayerInfo.Name}";
                 VMUserInfo.PlayerId = $"玩家档案编号 (游戏ID) : {PlayerInfo.ProfileId}";
                 VMUserInfo.PlayerSteamId = $"Steam3 ID (64bit DEC) : {PlayerInfo.SteamId}";
-                // 输出到界面
-                //text_player_name.Text = VMUserInfo.PlayerName;
-                //text_player_id.Text = VMUserInfo.PlayerId;
-                //text_player_steam_id.Text = VMUserInfo.PlayerSteamId;
                 // 反向绑定文本编辑框
                 this.TextBoxPlayerId.Text = PlayerInfo.ProfileId.ToString();
             }
@@ -47,6 +43,5 @@ namespace AoE4GameBox.Pages
         {
             return this.TextBoxPlayerId.Text;
         }
-
     }
 }

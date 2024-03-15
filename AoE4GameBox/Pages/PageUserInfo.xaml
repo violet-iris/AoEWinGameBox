@@ -9,11 +9,11 @@
     d:DataContext="{d:DesignInstance Type=local:PageUserInfoViewModel}"
     mc:Ignorable="d">
     <StackPanel Margin="20">
-        <TextBlock x:Name="text_player_name" Text="{Binding PlayerName}"/>
-        <TextBlock x:Name="text_player_id" Text="{Binding PlayerId}" />
-        <TextBlock x:Name="text_player_steam_id" Text="{Binding PlayerSteamId}" />
+        <TextBlock Text="{Binding PlayerName}"/>
+        <TextBlock Text="{Binding PlayerId}" />
+        <TextBlock Text="{Binding PlayerSteamId}" />
         <TextBox x:Name="TextBoxPlayerId">
-            <!--<TextBox.ToolTip>
+            <ToolTipService.ToolTip>
                 <StackPanel>
                     <TextBlock Text="可以查询到任一玩家的方式 推荐使用玩家档案编号" FontWeight="Bold" />
                     <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,4"/>
@@ -24,7 +24,7 @@
                     <TextBlock FontWeight="Bold" Text="玩家昵称（模糊查找）"/>
                     <TextBlock FontStyle="Italic" Text="游戏中当前的昵称（实际上是Steam昵称），如果重名则查询不一定准确" />
                 </StackPanel>
-            </TextBox.ToolTip>-->
+            </ToolTipService.ToolTip>
             <TextBox.Text>11784459</TextBox.Text>
         </TextBox>
         <Button x:Name="BtnSearchPlayer" Click="BtnSearchPlayer_Click" 
