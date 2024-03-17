@@ -6,10 +6,92 @@
     xmlns:local="using:AoE4GameBox.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+    <StackPanel Margin="20">
+        <Grid x:Name="GridGame" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <Border Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
+                <TextBlock x:Name="TextBlock_map_name" Text="地图"></TextBlock>
+            </Border>
+            <Border Grid.Column="2" HorizontalAlignment="Center">
+                <TextBlock Text="ELO分"></TextBlock>
+            </Border>
+            <Border Grid.Column="3" HorizontalAlignment="Center">
+                <TextBlock Text="Rank排名"></TextBlock>
+            </Border>
+            <Border Grid.Column="4" HorizontalAlignment="Center">
+                <TextBlock Text="胜率"></TextBlock>
+            </Border>
+            <Border Grid.Column="5" HorizontalAlignment="Center">
+                <TextBlock Text="胜场数"></TextBlock>
+            </Border>
+            <Border Grid.Column="6" HorizontalAlignment="Center">
+                <TextBlock Text="负场数"></TextBlock>
+            </Border>
+        </Grid>
 
-    <Grid>
-        <TextBlock Text="2"></TextBlock>
-    </Grid>
+        <!--<Button x:Name="btn_change_show" Click="ChangeOverlayShow"
+                Content="浮窗 开/关">
+            <ToolTipService.ToolTip>
+                <StackPanel>
+                    <TextBlock Text="操作方法" FontWeight="Bold" />
+                    <TextBlock Text="点击这个按钮，开关浮窗显示"/>
+                </StackPanel>
+            </ToolTipService.ToolTip>
+        </Button>
+
+        <Button x:Name="btn_change_transparent" Click="ChangeOverlayTranparent"
+                Content="更改浮窗位置">
+            <ToolTipService.ToolTip>
+                <StackPanel>
+                    <TextBlock Text="操作方法" FontWeight="Bold" />
+                    <TextBlock Text="点击这个按钮，切换透明和不透明模式"/>
+                    <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,4"/>
+                    <TextBlock Text="不透明模式下可以随意拖动浮窗，直至合适位置" FontStyle="Italic"/>
+                </StackPanel>
+            </ToolTipService.ToolTip>
+        </Button>
+
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="btn_change_size" Click="ChangeOverlaySize"
+                    Content="更改浮窗大小">
+            </Button>
+            <TextBlock x:Name="TextBlock_overlay_width" Text="宽度"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox
+                            x:Name="text_overlay_width"
+                            Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Text="700" TextAlignment="Center" />
+            <TextBlock x:Name="TextBlock_overlay_height" Text="高度"
+                               HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <TextBox
+                            x:Name="text_overlay_height"
+                            Width="50" HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Text="300" TextAlignment="Center" />
+        </StackPanel>
+
+        <Button x:Name="BtnRefreshGameInfo" Click="BtnRefreshGameInfo_Click"
+                Content="刷新对局信息">
+            <ToolTipService.ToolTip>
+                <StackPanel>
+                    <TextBlock Text="操作方法" FontWeight="Bold" />
+                    <TextBlock Text="点击这个按钮，刷新对局信息"/>
+                    <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,4"/>
+                    <TextBlock Text="建议点击间隔高于15秒，否则可能触发API保护机制" FontStyle="Italic"/>
+                </StackPanel>
+            </ToolTipService.ToolTip>
+        </Button>-->
+    </StackPanel>
 </Page>
