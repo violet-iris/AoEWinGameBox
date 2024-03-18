@@ -23,7 +23,7 @@
             </Grid.RowDefinitions>
             
             <Border Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
-                <TextBlock x:Name="TextBlock_map_name" Text="地图"></TextBlock>
+                <TextBlock x:Name="TextBlockMapName" Text="地图"></TextBlock>
             </Border>
             <Border Grid.Column="2" HorizontalAlignment="Center">
                 <TextBlock Text="ELO分"></TextBlock>

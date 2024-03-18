@@ -1,7 +1,14 @@
+using AoE4GameBox.Common;
 using AoE4GameBox.Model;
 using AoE4GameBox.Tools;
+using Microsoft.UI.Text;
+using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Media.Imaging;
+using Microsoft.UI.Xaml.Media;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AoE4GameBox.Pages
 {
@@ -42,6 +49,39 @@ namespace AoE4GameBox.Pages
         private string GetPlayerSearchText()
         {
             return this.TextBoxPlayerId.Text;
+        }
+
+        public async Task<List<OverlayGame>> GetLastGame(string strPlayerID)
+        {
+            Result reLatestGame = await RequestAoE4World.GetLatestGame(strPlayerID);
+            if (reLatestGame.Code == IConstants.CODE_200)
+            {
+                List<OverlayGame> teamList = new((List<OverlayGame>)reLatestGame.Data);
+                return teamList;
+            } else
+            {
+                return [];
+            }
+        }
+
+        private async void BtnBind_Click(object sender, RoutedEventArgs e)
+        {
+            var strPlayerID = this.GetPlayerSearchText();
+            // 获取最近一场游戏的信息
+            List<OverlayGame> teamList = await this.GetLastGame(strPlayerID);
+            // 检查是否获取成功
+            if (teamList.Count > 0)
+            {
+                
+            }
+
+            //// 关闭旧的浮窗
+            //overlayWindow?.Close();
+            //// 创建新的浮窗
+            //overlayWindow = new(teamList);
+            //// 显示浮窗
+            //boolOverlayShow = true;
+            //overlayWindow.Show();
         }
     }
 }

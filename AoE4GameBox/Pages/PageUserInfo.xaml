@@ -29,9 +29,10 @@
         </TextBox>
         <Button x:Name="BtnSearchPlayer" Click="BtnSearchPlayer_Click" 
                 Content="搜索玩家" />
+        <Button x:Name="BtnBind" Click="BtnBind_Click"
+                Content="绑定玩家" />
         <!--<Button x:Name="BtnToNetCheck" Click="BtnToNetCheck_Click" 
                 Content="检测API站点连通性" />-->
-        <!--<Button x:Name="btn_bind" Click="btn_bind_Click" 
-                Content="绑定玩家" />-->
+
     </StackPanel>
 </Page>
