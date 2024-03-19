@@ -48,6 +48,7 @@
     <None Remove="Pages\PageRandom.xaml" />
     <None Remove="Pages\PageSetting.xaml" />
     <None Remove="Pages\PageUserInfo.xaml" />
+    <None Remove="Pages\WindowOSD.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -85,6 +86,11 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Pages\WindowOSD.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Pages\PageAbout.xaml">

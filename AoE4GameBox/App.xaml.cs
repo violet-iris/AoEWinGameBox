@@ -37,6 +37,7 @@ namespace AoE4GameBox
             Logger.Info("************************* Log Start *************************");
 
             m_window = new MainWindow();
+            m_window.ExtendsContentIntoTitleBar = true;
             m_window.SetIcon("Assets/Images/A.ico");
             m_window.Activate();
 

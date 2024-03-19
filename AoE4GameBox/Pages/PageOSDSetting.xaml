@@ -21,7 +21,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition/>
             </Grid.RowDefinitions>
-            
+
             <Border Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Center">
                 <TextBlock x:Name="TextBlockMapName" Text="地图"></TextBlock>
             </Border>
@@ -41,7 +41,8 @@
                 <TextBlock Text="负场数"></TextBlock>
             </Border>
         </Grid>
-
+        <Button x:Name="BtnNewWindow" Click="BtnNewWindow_Click"
+                Content="测试新窗口"/>
         <!--<Button x:Name="btn_change_show" Click="ChangeOverlayShow"
                 Content="浮窗 开/关">
             <ToolTipService.ToolTip>

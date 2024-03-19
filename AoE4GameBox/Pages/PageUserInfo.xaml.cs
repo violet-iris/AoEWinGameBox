@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Media;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace AoE4GameBox.Pages
 {
@@ -64,7 +65,12 @@ namespace AoE4GameBox.Pages
             }
         }
 
-        private async void BtnBind_Click(object sender, RoutedEventArgs e)
+        private void BtnBind_Click(object sender, RoutedEventArgs e)
+        {
+            ShowOSDInfo();
+        }
+
+        private async void ShowOSDInfo()
         {
             var strPlayerID = this.GetPlayerSearchText();
             // 获取最近一场游戏的信息
@@ -72,7 +78,7 @@ namespace AoE4GameBox.Pages
             // 检查是否获取成功
             if (teamList.Count > 0)
             {
-                
+                Frame.Navigate(typeof(PageOSDSetting), teamList);
             }
 
             //// 关闭旧的浮窗

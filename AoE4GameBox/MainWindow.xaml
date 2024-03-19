@@ -25,7 +25,7 @@
         </NavigationView.PaneTitle>
         <NavigationView.MenuItems>
             <NavigationViewItem Icon="ContactInfo" Content="玩家信息" Tag="PageMain" />
-            <NavigationViewItem Icon="Play" Content="浮窗" Tag="PageOSD" />
+            <NavigationViewItem Icon="Play" Content="浮窗设置" Tag="PageOSD" />
             <NavigationViewItem Icon="Refresh" Content="随机地图/文明" Tag="PageRandom" />
             <NavigationViewItem Icon="Stop" Content="网络检测" Tag="PageNetCheck" />
         </NavigationView.MenuItems>
