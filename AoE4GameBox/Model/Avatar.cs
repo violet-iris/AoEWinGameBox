@@ -6,12 +6,14 @@
         public string Medium { get; set; }
         public string Full { get; set; }
 
+        private readonly string defaultAvatar = "https://static.aoe4world.com/assets/steam/missing_avatar-e242b35d00203aa906f62c1c86d27eefce0320fc9d02de64338abfa732303652.jpg";
+
         // Default constructor
         public Avatar()
         {
-            this.Small = "Default";
-            this.Medium = "Default";
-            this.Full = "Default";
+            this.Small = defaultAvatar;
+            this.Medium = defaultAvatar;
+            this.Full = defaultAvatar;
         }
 
         // Full parameter constructor
@@ -19,9 +21,9 @@
         {
             if (small == null)
             {
-                this.Small = "Default";
-                this.Medium = "Default";
-                this.Full = "Default";
+                this.Small = defaultAvatar;
+                this.Medium = defaultAvatar;
+                this.Full = defaultAvatar;
             } else
             {
                 this.Small = small;

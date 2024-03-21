@@ -4,35 +4,52 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:AoE4GameBox.Pages"
+    xmlns:converters="using:AoE4GameBox.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     d:DataContext="{d:DesignInstance Type=local:PageUserInfoViewModel}"
     mc:Ignorable="d">
-    <StackPanel Margin="20">
-        <TextBlock Text="{Binding PlayerName}"/>
-        <TextBlock Text="{Binding PlayerId}" />
-        <TextBlock Text="{Binding PlayerSteamId}" />
-        <TextBox x:Name="TextBoxPlayerId">
-            <ToolTipService.ToolTip>
-                <StackPanel>
-                    <TextBlock Text="可以查询到任一玩家的方式 推荐使用玩家档案编号" FontWeight="Bold" />
-                    <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,4"/>
-                    <TextBlock FontWeight="Bold" Text="玩家档案编号（精确查找+快）"/>
-                    <TextBlock FontStyle="Italic" Text="Player Profile ID：是AoE4world站点提供的每一位玩家的独立固定ID，目前译作玩家档案编号" />
-                    <TextBlock FontWeight="Bold" Text="Steam ID（精确查找+慢）"/>
-                    <TextBlock FontStyle="Italic" Text="Steam ID码（一般为17位）" />
-                    <TextBlock FontWeight="Bold" Text="玩家昵称（模糊查找）"/>
-                    <TextBlock FontStyle="Italic" Text="游戏中当前的昵称（实际上是Steam昵称），如果重名则查询不一定准确" />
-                </StackPanel>
-            </ToolTipService.ToolTip>
-            <TextBox.Text>11784459</TextBox.Text>
-        </TextBox>
-        <Button x:Name="BtnSearchPlayer" Click="BtnSearchPlayer_Click" 
-                Content="搜索玩家" />
-        <Button x:Name="BtnBind" Click="BtnBind_Click"
-                Content="绑定玩家" />
-        <!--<Button x:Name="BtnToNetCheck" Click="BtnToNetCheck_Click" 
-                Content="检测API站点连通性" />-->
-
-    </StackPanel>
+    <Page.Resources>
+        <converters:StringToUriConverter x:Key="StringToUriConverter"/>
+    </Page.Resources>
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Padding="10">
+            <TextBox Margin="5" x:Name="TextBoxPlayerId" Text="11784459">
+                <ToolTipService.ToolTip>
+                    <StackPanel>
+                        <TextBlock Text="可以查询到任一玩家的方式 推荐使用玩家档案编号" FontWeight="Bold" />
+                        <Border BorderBrush="Silver" BorderThickness="0,1,0,0" Margin="0,4"/>
+                        <TextBlock FontWeight="Bold" Text="玩家档案编号（精确查找+快）"/>
+                        <TextBlock FontStyle="Italic" Text="Player Profile ID：是AoE4world站点提供的每一位玩家的独立固定ID，目前译作玩家档案编号" />
+                        <TextBlock FontWeight="Bold" Text="Steam ID（精确查找+慢）"/>
+                        <TextBlock FontStyle="Italic" Text="Steam ID码（一般为17位）" />
+                        <TextBlock FontWeight="Bold" Text="玩家昵称（模糊查找）"/>
+                        <TextBlock FontStyle="Italic" Text="游戏中当前的昵称（实际上是Steam昵称），如果重名则查询不一定准确" />
+                    </StackPanel>
+                </ToolTipService.ToolTip>
+            </TextBox>
+            <Button Margin="5, 10" x:Name="BtnSearchPlayer" Click="BtnSearchPlayer_Click" Content="搜索玩家" />
+            <!--<Button Margin="5" x:Name="BtnBind" Click="BtnBind_Click"
+                Content="绑定玩家(故障)" />-->
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="1" Padding="10">
+            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding Name}" />
+            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding ProfileId}" />
+            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding SteamId}" />
+            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding CountryArea}" />
+            <HyperlinkButton Margin="5" Content="AoE4 World 个人资料页" NavigateUri="{Binding SiteUrl, Converter={StaticResource StringToUriConverter}}" />
+            <HyperlinkButton Margin="5" Content="Steam 个人资料页" NavigateUri="{Binding SteamSite, Converter={StaticResource StringToUriConverter}}" />
+        </StackPanel>
+        <Viewbox Grid.Column="1" Margin="5" Grid.Row="1" Width="150" Height="150">
+            <Image Source="{Binding Avatars, Converter={StaticResource StringToUriConverter}}" />
+        </Viewbox>
+    </Grid>
 </Page>

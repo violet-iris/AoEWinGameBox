@@ -51,7 +51,7 @@ namespace AoE4GameBox.Pages
 
             var ScreenHeight = DisplayArea.Primary.WorkArea.Height;
             var ScreenWidth = DisplayArea.Primary.WorkArea.Width;
-            this.AppWindow.MoveAndResize(new RectInt32((int)(ScreenWidth - 1292), (int)-8, 1300, 600));
+            this.AppWindow.MoveAndResize(new RectInt32((int)(ScreenWidth - 992), (int)-8, 1000, 600));
 
             //// 在窗口构造函数中设置不显示任务栏图标
             //this.ShowInTaskbar = false;

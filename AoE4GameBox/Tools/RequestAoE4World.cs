@@ -26,13 +26,13 @@ namespace AoE4GameBox.Tools
                 var PlayerProfileId = rootElement.GetProperty("profile_id").GetInt32();
                 var PlayerSteamId = rootElement.GetProperty("steam_id").GetString() ?? "Default";
                 var PlayerSiteUrl = rootElement.GetProperty("site_url").GetString() ?? "Default";
-                var StrAvatarSmall = rootElement.GetProperty("avatars").GetProperty("small").GetString() ?? "Default";
-                var StrAvatarMedium = rootElement.GetProperty("avatars").GetProperty("medium").GetString() ?? "Default";
-                var StrAvatarFull = rootElement.GetProperty("avatars").GetProperty("full").GetString() ?? "Default";
+                var StrAvatarSmall = rootElement.GetProperty("avatars").GetProperty("small").GetString();
+                var StrAvatarMedium = rootElement.GetProperty("avatars").GetProperty("medium").GetString();
+                var StrAvatarFull = rootElement.GetProperty("avatars").GetProperty("full").GetString();
                 var PlayerAvatars = new Avatar(StrAvatarSmall, StrAvatarMedium, StrAvatarFull);
                 var PlayerCountryArea = rootElement.GetProperty("country").GetString() ?? "Default";
 
-                var PlayerInfo = new Player(PlayerName, PlayerProfileId, PlayerSteamId, PlayerSiteUrl, PlayerCountryArea, PlayerAvatars);
+                var PlayerInfo = new Player(PlayerName, PlayerProfileId, PlayerSteamId, PlayerCountryArea, PlayerSiteUrl, PlayerAvatars);
 
                 return PlayerInfo;
 
@@ -93,6 +93,7 @@ namespace AoE4GameBox.Tools
             string url = $"https://aoe4world.com/api/v0/players/{str_player_id}/games/last";
             try
             {
+                Logger.Log(url);
                 // 创建HttpClient对象
                 using HttpClient client = new();
                 // 发送GET请求
@@ -106,6 +107,7 @@ namespace AoE4GameBox.Tools
                     // 解析JSON
                     JsonDocument jsonDocument = JsonDocument.Parse(responseBody);
                     JsonElement rootElement = jsonDocument.RootElement;
+                    Logger.Log(rootElement);
                     // 根据JSON结构进行操作
                     // 提取字符串字段
                     // 获取地图和对应排行榜

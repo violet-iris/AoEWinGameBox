@@ -27,7 +27,7 @@ namespace AoE4GameBox
 
         public MainWindow()
         {
-            //this.AppWindow.Resize(new Windows.Graphics.SizeInt32(800, 600));
+            this.AppWindow.Resize(new Windows.Graphics.SizeInt32(1280, 780));
             //SetWindowTransparent();
             this.InitializeComponent();
             //this.AppWindow.SetIcon("Assets/Images/A.ico");

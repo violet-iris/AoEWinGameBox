@@ -10,6 +10,8 @@ using Microsoft.UI.Xaml.Media;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.UI.Xaml.Data;
+using System;
 
 namespace AoE4GameBox.Pages
 {
@@ -35,9 +37,13 @@ namespace AoE4GameBox.Pages
             if (PlayerInfo.Name != "Default")
             {
                 // 保存结果
-                VMUserInfo.PlayerName = $"玩家昵称 : {PlayerInfo.Name}";
-                VMUserInfo.PlayerId = $"玩家档案编号 (游戏ID) : {PlayerInfo.ProfileId}";
-                VMUserInfo.PlayerSteamId = $"Steam3 ID (64bit DEC) : {PlayerInfo.SteamId}";
+                VMUserInfo.Name = $"玩家昵称 : {PlayerInfo.Name}";
+                VMUserInfo.ProfileId = $"玩家档案编号 (游戏ID) : {PlayerInfo.ProfileId}";
+                VMUserInfo.SteamId = $"Steam3 ID (64bit DEC) : {PlayerInfo.SteamId}";
+                VMUserInfo.CountryArea = $"国家或地区 (位置可能有误) : {PlayerInfo.CountryArea}";
+                VMUserInfo.SiteUrl = PlayerInfo.SiteUrl;
+                VMUserInfo.Avatars = PlayerInfo.Avatars.Full;
+                VMUserInfo.SteamSite = "https://steamcommunity.com/profiles/" + PlayerInfo.SteamId;
                 // 反向绑定文本编辑框
                 this.TextBoxPlayerId.Text = PlayerInfo.ProfileId.ToString();
             }
@@ -79,6 +85,7 @@ namespace AoE4GameBox.Pages
             if (teamList.Count > 0)
             {
                 Frame.Navigate(typeof(PageOSDSetting), teamList);
+                Logger.Info("绑定玩家成功");
             }
 
             //// 关闭旧的浮窗
@@ -88,6 +95,26 @@ namespace AoE4GameBox.Pages
             //// 显示浮窗
             //boolOverlayShow = true;
             //overlayWindow.Show();
+        }
+    }
+
+    public class StringToUriConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, string language)
+        {
+            if (value is string urlString)
+            {
+                if (Uri.TryCreate(urlString, UriKind.Absolute, out Uri uriResult))
+                {
+                    return uriResult;
+                }
+            }
+            return null; // Or you can return a default Uri here if necessary
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
+        {
+            throw new NotImplementedException(); // We don't need this for this conversion
         }
     }
 }
