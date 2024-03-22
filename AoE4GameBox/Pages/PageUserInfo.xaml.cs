@@ -1,15 +1,10 @@
 using AoE4GameBox.Common;
 using AoE4GameBox.Model;
 using AoE4GameBox.Tools;
-using Microsoft.UI.Text;
-using Microsoft.UI;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Imaging;
-using Microsoft.UI.Xaml.Media;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.UI.Xaml.Data;
 using System;
 
@@ -22,37 +17,37 @@ namespace AoE4GameBox.Pages
         public PageUserInfo()
         {
             this.InitializeComponent();
-            // ¿ªÆôÒ³Ãæ»º´æ
+            // ï¿½ï¿½ï¿½ï¿½Ò³ï¿½æ»ºï¿½ï¿½
             this.NavigationCacheMode = Microsoft.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-            // °ó¶¨Êý¾Ý
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             this.DataContext = VMUserInfo;
         }
 
         /// <summary>
-        /// ËÑË÷Íæ¼Ò»ù´¡ÐÅÏ¢
+        /// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
         /// </summary>
         private async void BtnSearchPlayer_Click(object sender, RoutedEventArgs e)
         {
             Player PlayerInfo = await RequestAoE4World.GetPlayerClassBySearch(this.GetPlayerSearchText());
             if (PlayerInfo.Name != "Default")
             {
-                // ±£´æ½á¹û
-                VMUserInfo.Name = $"Íæ¼ÒêÇ³Æ : {PlayerInfo.Name}";
-                VMUserInfo.ProfileId = $"Íæ¼Òµµ°¸±àºÅ (ÓÎÏ·ID) : {PlayerInfo.ProfileId}";
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                VMUserInfo.Name = $"ï¿½ï¿½ï¿½ï¿½Ç³ï¿½ : {PlayerInfo.Name}";
+                VMUserInfo.ProfileId = $"ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ (ï¿½ï¿½Ï·ID) : {PlayerInfo.ProfileId}";
                 VMUserInfo.SteamId = $"Steam3 ID (64bit DEC) : {PlayerInfo.SteamId}";
-                VMUserInfo.CountryArea = $"¹ú¼Ò»òµØÇø (Î»ÖÃ¿ÉÄÜÓÐÎó) : {PlayerInfo.CountryArea}";
+                VMUserInfo.CountryArea = $"ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ (Î»ï¿½Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½) : {PlayerInfo.CountryArea}";
                 VMUserInfo.SiteUrl = PlayerInfo.SiteUrl;
                 VMUserInfo.Avatars = PlayerInfo.Avatars.Full;
                 VMUserInfo.SteamSite = "https://steamcommunity.com/profiles/" + PlayerInfo.SteamId;
-                // ·´Ïò°ó¶¨ÎÄ±¾±à¼­¿ò
+                // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä±ï¿½ï¿½à¼­ï¿½ï¿½
                 this.TextBoxPlayerId.Text = PlayerInfo.ProfileId.ToString();
             }
         }
 
         /// <summary>
-        /// »ñÈ¡ÊäÈëµÄÍæ¼ÒID
+        /// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ID
         /// </summary>
-        /// <returns>·µ»Østring</returns>
+        /// <returns>ï¿½ï¿½ï¿½ï¿½string</returns>
         private string GetPlayerSearchText()
         {
             return this.TextBoxPlayerId.Text;
@@ -79,20 +74,20 @@ namespace AoE4GameBox.Pages
         private async void ShowOSDInfo()
         {
             var strPlayerID = this.GetPlayerSearchText();
-            // »ñÈ¡×î½üÒ»³¡ÓÎÏ·µÄÐÅÏ¢
+            // ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½ï¿½ï¿½Ï¢
             List<OverlayGame> teamList = await this.GetLastGame(strPlayerID);
-            // ¼ì²éÊÇ·ñ»ñÈ¡³É¹¦
+            // ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½È¡ï¿½É¹ï¿½
             if (teamList.Count > 0)
             {
                 Frame.Navigate(typeof(PageOSDSetting), teamList);
-                Logger.Info("°ó¶¨Íæ¼Ò³É¹¦");
+                Logger.Info("ï¿½ï¿½ï¿½ï¿½Ò³É¹ï¿½");
             }
 
-            //// ¹Ø±Õ¾ÉµÄ¸¡´°
+            //// ï¿½Ø±Õ¾ÉµÄ¸ï¿½ï¿½ï¿½
             //overlayWindow?.Close();
-            //// ´´½¨ÐÂµÄ¸¡´°
+            //// ï¿½ï¿½ï¿½ï¿½ï¿½ÂµÄ¸ï¿½ï¿½ï¿½
             //overlayWindow = new(teamList);
-            //// ÏÔÊ¾¸¡´°
+            //// ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½
             //boolOverlayShow = true;
             //overlayWindow.Show();
         }

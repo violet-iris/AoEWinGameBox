@@ -1,5 +1,4 @@
-﻿using AoE4GameBox.Model;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace AoE4GameBox.Pages
@@ -18,7 +17,7 @@ namespace AoE4GameBox.Pages
 
         public string Name
         {
-            get { return _name; }
+            get => _name;
             set
             {
                 if (SetProperty(ref _name, value))
@@ -29,7 +28,7 @@ namespace AoE4GameBox.Pages
         }
         public string ProfileId
         {
-            get { return _profileId; }
+            get => _profileId;
             set
             {
                 if (SetProperty(ref _profileId, value))
@@ -41,7 +40,7 @@ namespace AoE4GameBox.Pages
 
         public string SteamId
         {
-            get { return _steamId; }
+            get => _steamId;
             set
             {
                 if (SetProperty(ref _steamId, value))
@@ -53,7 +52,7 @@ namespace AoE4GameBox.Pages
 
         public string CountryArea
         {
-            get { return _countryArea; }
+            get => _countryArea;
             set
             {
                 if (SetProperty(ref _countryArea, value))
@@ -65,7 +64,7 @@ namespace AoE4GameBox.Pages
 
         public string SiteUrl
         {
-            get { return _siteUrl; }
+            get => _siteUrl;
             set
             {
                 if (SetProperty(ref _siteUrl, value))
@@ -77,7 +76,7 @@ namespace AoE4GameBox.Pages
 
         public string Avatars
         {
-            get { return _avatars; }
+            get => _avatars;
             set
             {
                 if (SetProperty(ref _avatars, value))
@@ -89,7 +88,7 @@ namespace AoE4GameBox.Pages
 
         public string SteamSite
         {
-            get { return _steamSite; }
+            get => _steamSite;
             set
             {
                 if (SetProperty(ref _steamSite, value))
@@ -110,16 +109,12 @@ namespace AoE4GameBox.Pages
             Avatars = "头像";
         }
 
-        protected bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
+        private bool SetProperty<T>(ref T field, T newValue, [CallerMemberName] string propertyName = null)
         {
-            if (!(object.Equals(field, newValue)))
-            {
-                field = (newValue);
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-                return true;
-            }
-
-            return false;
+            if (Equals(field, newValue)) return false;
+            field = (newValue);
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            return true;
         }
     }
 }

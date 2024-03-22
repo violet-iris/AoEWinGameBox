@@ -41,15 +41,15 @@
                 Content="绑定玩家(故障)" />-->
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Padding="10">
-            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding Name}" />
-            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding ProfileId}" />
-            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding SteamId}" />
-            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding CountryArea}" />
-            <HyperlinkButton Margin="5" Content="AoE4 World 个人资料页" NavigateUri="{Binding SiteUrl, Converter={StaticResource StringToUriConverter}}" />
-            <HyperlinkButton Margin="5" Content="Steam 个人资料页" NavigateUri="{Binding SteamSite, Converter={StaticResource StringToUriConverter}}" />
+            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding Path=Name}" />
+            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding Path=ProfileId}" />
+            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding Path=SteamId}" />
+            <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding Path=CountryArea}" />
+            <HyperlinkButton Margin="5" Content="AoE4 World 个人资料页" NavigateUri="{Binding Path=SiteUrl, Converter={StaticResource StringToUriConverter}}" />
+            <HyperlinkButton Margin="5" Content="Steam 个人资料页" NavigateUri="{Binding Path=SteamSite, Converter={StaticResource StringToUriConverter}}" />
         </StackPanel>
         <Viewbox Grid.Column="1" Margin="5" Grid.Row="1" Width="150" Height="150">
-            <Image Source="{Binding Avatars, Converter={StaticResource StringToUriConverter}}" />
+            <Image Source="{Binding Path=Avatars, Converter={StaticResource StringToUriConverter}}" />
         </Viewbox>
     </Grid>
 </Page>

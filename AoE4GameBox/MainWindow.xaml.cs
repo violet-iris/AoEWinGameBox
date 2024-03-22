@@ -31,7 +31,7 @@ namespace AoE4GameBox
             //SetWindowTransparent();
             this.InitializeComponent();
             //this.AppWindow.SetIcon("Assets/Images/A.ico");
-            contentFrame.Navigate(typeof(PageUserInfo));
+            this.ContentFrame.Navigate(typeof(PageUserInfo));
         }
 
         public void SetWindowTransparent()
@@ -54,20 +54,28 @@ namespace AoE4GameBox
         {
             var selectedItem = (NavigationViewItem)args.SelectedItem;
 
-            if ((string)selectedItem.Tag == "PageMain")
-                contentFrame.Navigate(typeof(PageUserInfo));
-            else if ((string)selectedItem.Tag == "PageOSD")
-                contentFrame.Navigate(typeof(PageOSDSetting));
-            else if ((string)selectedItem.Tag == "PageRandom")
-                contentFrame.Navigate(typeof(PageRandom));
-            else if ((string)selectedItem.Tag == "PageNetCheck")
-                contentFrame.Navigate(typeof(PageNetCheck));
-            else if ((string)selectedItem.Tag == "PageAbout")
-                contentFrame.Navigate(typeof(PageAbout));
+            switch ((string)selectedItem.Tag)
+            {
+                case "PageMain":
+                    this.ContentFrame.Navigate(typeof(PageUserInfo));
+                    break;
+                case "PageOSD":
+                    this.ContentFrame.Navigate(typeof(PageOSDSetting));
+                    break;
+                case "PageRandom":
+                    this.ContentFrame.Navigate(typeof(PageRandom));
+                    break;
+                case "PageNetCheck":
+                    this.ContentFrame.Navigate(typeof(PageNetCheck));
+                    break;
+                case "PageAbout":
+                    this.ContentFrame.Navigate(typeof(PageAbout));
+                    break;
+            }
 
             if (args.IsSettingsSelected)
             {
-                contentFrame.Navigate(typeof(PageSetting));
+                this.ContentFrame.Navigate(typeof(PageSetting));
             }
         }
     }

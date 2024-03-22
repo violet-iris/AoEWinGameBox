@@ -7,14 +7,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    xmlns:winuiex="using:WinUIEx"
     Title="帝国时代4游戏盒子（技术预览）"
     >
-    <!--<Window.SystemBackdrop>
-        <winuiex:TransparentTintBackdrop />
-    </Window.SystemBackdrop>-->
-    <NavigationView SelectionChanged="NavigationView_SelectionChanged"
-                    x:Name="nvSample">
+    <NavigationView SelectionChanged="NavigationView_SelectionChanged">
         <NavigationView.Header>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="帝国时代4游戏盒子（技术预览）" VerticalAlignment="Center" />
@@ -34,6 +29,6 @@
             <NavigationViewItem Icon="ContactInfo" Content="关于" Tag="PageAbout"/>
         </NavigationView.FooterMenuItems>
 
-        <Frame x:Name="contentFrame"/>
+        <Frame x:Name="ContentFrame"/>
     </NavigationView>
 </Window>
