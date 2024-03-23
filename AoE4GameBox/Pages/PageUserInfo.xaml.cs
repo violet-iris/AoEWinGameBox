@@ -3,10 +3,10 @@ using AoE4GameBox.Model;
 using AoE4GameBox.Tools;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.UI.Xaml.Data;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace AoE4GameBox.Pages
 {

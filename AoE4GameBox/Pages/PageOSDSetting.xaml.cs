@@ -1,14 +1,13 @@
 using AoE4GameBox.Model;
 using AoE4GameBox.Tools;
-using Microsoft.UI.Text;
 using Microsoft.UI;
+using Microsoft.UI.Text;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Media;
-using System.Collections.Generic;
+using Microsoft.UI.Xaml.Media.Imaging;
 using Microsoft.UI.Xaml.Navigation;
-using System.Diagnostics;
+using System.Collections.Generic;
 
 namespace AoE4GameBox.Pages
 {

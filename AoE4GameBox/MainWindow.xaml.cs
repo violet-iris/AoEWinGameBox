@@ -1,11 +1,8 @@
 using AoE4GameBox.Pages;
-using Microsoft.UI;
-using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using System.Runtime.InteropServices;
-using Windows.Graphics;
 
 namespace AoE4GameBox
 {
