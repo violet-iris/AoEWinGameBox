@@ -5,10 +5,10 @@
         public string Name { get; set; } = "Default"; // 玩家名
         public int ProfileId { get; set; } = 0; // Profile ID
         public string SteamId { get; set; } = "Default"; // Steam ID
-        public string CountryArea { get; set; } = "Default"; // 国家或地区
         public string SiteUrl { get; set; } = "Default"; // Profile site
+        public string CountryArea { get; set; } = "Default"; // 国家或地区
         public Avatar Avatars { get; set; } = new Avatar();   // 头像
-
+        // TODO: Social data
 
         // Default constructor
         public Player()
