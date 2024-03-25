@@ -10,9 +10,10 @@
         public int MmrDiff { get; set; } = 0;
         public string InputType { get; set; } = "Default";
         public Player Player { get; set; } = new Player();
+        public ClassGameModeInfo Modes { get; set; } = new ClassGameModeInfo();
     }
 
-    public class GameModeInfo
+    public class ClassGameModeInfo
     {
         public string ModeName { get; set; } = "Default";
         public int Rating { get; set; } = 0;
@@ -29,7 +30,35 @@
         public int DropsCount { get; set; } = 0;
         public string LastGameAt { get; set; } = "Default";
         public int WinRate { get; set; } = 0;
-
+        public ClassRatingHistory RatingHistory { get; set; } = new ClassRatingHistory();
         public int Season { get; set; } = 7;
+        public ClassPreviousSeasons PreviousSeasons { get; set; } = new ClassPreviousSeasons();
+    }
+
+    public class ClassRatingHistory
+    {
+        public int GameId { get; set; } = 0;
+        public int Rating { get; set; } = 0;
+        public int Streak { get; set; } = 0;
+        public int WinsCount { get; set; } = 0;
+        public int DropsCount { get; set; } = 0;
+        public int DisputesCount { get; set; } = 0;
+        public int GamesCount { get; set; } = 0;
+    }
+
+    public class ClassPreviousSeasons
+    {
+        public int Rating { get; set; } = 0;
+        public int Rank { get; set; } = 0;
+        public string RankLevel { get; set; } = "Default";
+        public int Streak { get; set; } = 0;
+        public int GamesCount { get; set; } = 0;
+        public int WinsCount { get; set; } = 0;
+        public int LossesCount { get; set; } = 0;
+        public int DisputesCount { get; set; } = 0;
+        public int DropsCount { get; set; } = 0;
+        public string LastGameAt { get; set; } = "Default";
+        public int WinRate { get; set; } = 0;
+        public int Season { get; set; } = 0;
     }
 }

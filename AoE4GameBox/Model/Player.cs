@@ -8,6 +8,7 @@
         public string SiteUrl { get; set; } = "Default"; // Profile site
         public string CountryArea { get; set; } = "Default"; // 国家或地区
         public Avatar Avatars { get; set; } = new Avatar();   // 头像
+        //public JsonArrayAttribute Social { get; set; } = new JsonArrayAttribute();
         // TODO: Social data
 
         // Default constructor
