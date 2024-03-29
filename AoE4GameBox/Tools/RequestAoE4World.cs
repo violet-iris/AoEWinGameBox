@@ -1,10 +1,12 @@
 ﻿using AoE4GameBox.Common;
 using AoE4GameBox.Model;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Windows.Media.AppBroadcasting;
 
 namespace AoE4GameBox.Tools
 {
@@ -85,6 +87,72 @@ namespace AoE4GameBox.Tools
             JsonElement rootElement = jsonDocument.RootElement.GetProperty("players");
             string playerInfo = rootElement[0].ToString();
             return playerInfo;
+        }
+
+        public static async Task<Result> GetPlayerLastGame(string str_player_id)
+        {
+            string url = "https://aoe4world.com/api/v0/players/" + str_player_id +"/games/last";
+            try
+            {
+                Logger.Info(url);
+                using HttpClient client = new();
+                Task<HttpResponseMessage> responseTask = client.GetAsync(url);
+                responseTask.Wait();
+                if (responseTask.Result.IsSuccessStatusCode)
+                {
+                    string responseBody = await responseTask.Result.Content.ReadAsStringAsync();
+                    // 输出网页内容
+                    // 使用Newtonsoft.Json解析JSON
+                    JObject jsonObject = JObject.Parse(responseBody);
+                    // 日志记录根元素
+                    Logger.Info(jsonObject);
+
+                    // 提取字符串字段
+                    string GameId = (string)jsonObject["game_id"];
+                    // TODO：继续提取其他字段
+                    string str_map = (string)jsonObject["map"];
+                    string str_leaderboard = (string)jsonObject["leaderboard"];
+
+                    // 将 JSON 数据转换为 List<OverlayGame>
+                    List<GameLast> teamList = [];
+                    int index = 0;
+                    foreach (JToken outerToken in jsonObject["teams"])
+                    {
+                        foreach (JToken innerToken in outerToken)
+                        {
+                            // 处理 innerToken 并创建 OverlayGame 对象
+                            OverlayGame ObjectOverlayGame = new OverlayGame
+                            {
+                                Map = str_map,
+                                Leaderboard = str_leaderboard,
+                                TeamNumber = index,
+                                PlayerName = innerToken["name"]?.ToString() ?? "default",
+                                PlayerCiv = innerToken["civilization"]?.ToString() ?? "default",
+                                Rating = innerToken["modes"][str_leaderboard]["rating"]?.ToString(),
+                                Rank = innerToken["modes"][str_leaderboard]["rank"]?.ToString(),
+                                Winrate = innerToken["modes"][str_leaderboard]["win_rate"]?.ToString(),
+                                Wins = innerToken["modes"][str_leaderboard]["wins_count"]?.ToString(),
+                                Losses = innerToken["modes"][str_leaderboard]["losses_count"]?.ToString()
+                            };
+                        }
+                        index++;
+                    }
+                    Result result = Result.Success(teamList);
+                    return result;
+                } else
+                {
+                    Logger.Log("玩家未找到");
+                    Logger.Log($"Request failed with status code : ${responseTask.Result.StatusCode}");
+                    Result result = Result.Error($"玩家未找到 " +
+                        $"Request failed with status code : ${responseTask.Result.StatusCode}");
+                    return result;
+                }
+            } catch (Exception ex)
+            {
+                Logger.Log("Exception ex", ex.ToString());
+                Result result = Result.Error(IConstants.CODE_500, "查询系统异常");
+                return result;
+            }
         }
 
         internal static async Task<Result> GetLatestGame(string str_player_id)
