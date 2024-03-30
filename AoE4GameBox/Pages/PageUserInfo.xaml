@@ -36,9 +36,10 @@
                     </StackPanel>
                 </ToolTipService.ToolTip>
             </TextBox>
-            <Button Margin="5, 10" x:Name="BtnSearchPlayer" Click="BtnSearchPlayer_Click" Content="搜索玩家" />
-            <!--<Button Margin="5" x:Name="BtnBind" Click="BtnBind_Click"
-                Content="绑定玩家(故障)" />-->
+            <Button Margin="5, 10" x:Name="BtnSearchPlayer" Click="BtnSearchPlayer_Click"
+                    Content="搜索玩家" />
+            <Button Margin="5, 10" x:Name="BtnBind" Click="BtnBind_Click"
+                    Content="绑定玩家(故障)" />
         </StackPanel>
         <StackPanel Grid.Column="0" Grid.Row="1" Padding="10">
             <TextBlock Margin="5" IsTextSelectionEnabled="True" Text="{Binding Path=Name}" />

@@ -3,6 +3,7 @@ using AoE4GameBox.Model;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -109,35 +110,50 @@ namespace AoE4GameBox.Tools
 
                     // 提取字符串字段
                     string GameId = (string)jsonObject["game_id"];
-                    // TODO：继续提取其他字段
-                    string str_map = (string)jsonObject["map"];
-                    string str_leaderboard = (string)jsonObject["leaderboard"];
+                    string StartedAt = (string)jsonObject["started_at"];
+                    string UpdatedAt = (string)jsonObject["updated_at"];
+                    string Duration = (string)jsonObject["duration"];
+                    string Map = (string)jsonObject["map"];
+                    string Kind = (string)jsonObject["kind"];
+                    string Leaderboard = (string)jsonObject["leaderboard"];
+                    string MmrLeaderboard = (string)jsonObject["mmr_leaderboard"];
+                    string Season = (string)jsonObject["season"];
+                    string Server = (string)jsonObject["server"];
+                    string Patch = (string)jsonObject["patch"];
+                    string AvarageRating = (string)jsonObject["avarage_rating"];
+                    string AvarageRatingDeviation = (string)jsonObject["avarage_rating_deviation"];
+                    string AvarageMmr = (string)jsonObject["avarage_mmr"];
+                    string AvarageMmrDeviation = (string)jsonObject["avarage_mmr_deviation"];
+                    string Ongoing = (string)jsonObject["ongoing"];
+                    string JustFinished = (string)jsonObject["just_finished"];
 
-                    // 将 JSON 数据转换为 List<OverlayGame>
-                    List<GameLast> teamList = [];
-                    int index = 0;
-                    foreach (JToken outerToken in jsonObject["teams"])
-                    {
-                        foreach (JToken innerToken in outerToken)
-                        {
-                            // 处理 innerToken 并创建 OverlayGame 对象
-                            OverlayGame ObjectOverlayGame = new OverlayGame
-                            {
-                                Map = str_map,
-                                Leaderboard = str_leaderboard,
-                                TeamNumber = index,
-                                PlayerName = innerToken["name"]?.ToString() ?? "default",
-                                PlayerCiv = innerToken["civilization"]?.ToString() ?? "default",
-                                Rating = innerToken["modes"][str_leaderboard]["rating"]?.ToString(),
-                                Rank = innerToken["modes"][str_leaderboard]["rank"]?.ToString(),
-                                Winrate = innerToken["modes"][str_leaderboard]["win_rate"]?.ToString(),
-                                Wins = innerToken["modes"][str_leaderboard]["wins_count"]?.ToString(),
-                                Losses = innerToken["modes"][str_leaderboard]["losses_count"]?.ToString()
-                            };
-                        }
-                        index++;
-                    }
-                    Result result = Result.Success(teamList);
+                    Logger.Info(jsonObject["teams"].Count());
+
+                    //// 将 JSON 数据转换为 List<OverlayGame>
+                    //List<GameLast> teamList = [];
+                    //int index = 0;
+                    //foreach (JToken outerToken in jsonObject["teams"])
+                    //{
+                    //    foreach (JToken innerToken in outerToken)
+                    //    {
+                    //        // 处理 innerToken 并创建 OverlayGame 对象
+                    //        OverlayGame ObjectOverlayGame = new OverlayGame
+                    //        {
+                    //            Map = str_map,
+                    //            Leaderboard = str_leaderboard,
+                    //            TeamNumber = index,
+                    //            PlayerName = innerToken["name"]?.ToString() ?? "default",
+                    //            PlayerCiv = innerToken["civilization"]?.ToString() ?? "default",
+                    //            Rating = innerToken["modes"][str_leaderboard]["rating"]?.ToString(),
+                    //            Rank = innerToken["modes"][str_leaderboard]["rank"]?.ToString(),
+                    //            Winrate = innerToken["modes"][str_leaderboard]["win_rate"]?.ToString(),
+                    //            Wins = innerToken["modes"][str_leaderboard]["wins_count"]?.ToString(),
+                    //            Losses = innerToken["modes"][str_leaderboard]["losses_count"]?.ToString()
+                    //        };
+                    //    }
+                    //    index++;
+                    //}
+                    Result result = Result.Success();
                     return result;
                 } else
                 {

@@ -17,80 +17,79 @@ namespace AoE4GameBox.Pages
         public PageUserInfo()
         {
             this.InitializeComponent();
-            // ����ҳ�滺��
+            // 状态栏
             this.NavigationCacheMode = Microsoft.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-            // ������
+            // 数据绑定
             this.DataContext = VMUserInfo;
         }
 
         /// <summary>
-        /// ������һ�����Ϣ
+        /// 搜索玩家
         /// </summary>
         private async void BtnSearchPlayer_Click(object sender, RoutedEventArgs e)
         {
             Player PlayerInfo = await RequestAoE4World.GetPlayerClassBySearch(this.GetPlayerSearchText());
             if (PlayerInfo.Name != "Default")
             {
-                // ������
-                VMUserInfo.Name = $"����ǳ� : {PlayerInfo.Name}";
-                VMUserInfo.ProfileId = $"��ҵ������ (��ϷID) : {PlayerInfo.ProfileId}";
+                // 设置数据绑定信息
+                VMUserInfo.Name = $"玩家昵称 : {PlayerInfo.Name}";
+                VMUserInfo.ProfileId = $"玩家档案编号 (游戏ID) : {PlayerInfo.ProfileId}";
                 VMUserInfo.SteamId = $"Steam3 ID (64bit DEC) : {PlayerInfo.SteamId}";
-                VMUserInfo.CountryArea = $"���һ���� (λ�ÿ�������) : {PlayerInfo.CountryArea}";
+                VMUserInfo.CountryArea = $"账号国家/地区 (位置可能有误) : {PlayerInfo.CountryArea}";
                 VMUserInfo.SiteUrl = PlayerInfo.SiteUrl;
                 VMUserInfo.Avatars = PlayerInfo.Avatars.Full;
                 VMUserInfo.SteamSite = "https://steamcommunity.com/profiles/" + PlayerInfo.SteamId;
-                // ������ı��༭��
+                // 反向绑定输入框
                 this.TextBoxPlayerId.Text = PlayerInfo.ProfileId.ToString();
             }
         }
 
         /// <summary>
-        /// ��ȡ��������ID
+        /// 获取玩家id
         /// </summary>
-        /// <returns>����string</returns>
         private string GetPlayerSearchText()
         {
             return this.TextBoxPlayerId.Text;
         }
 
-        public async Task<List<OverlayGame>> GetLastGame(string strPlayerID)
+        public void GetLastGame(string strPlayerID)
         {
-            Result reLatestGame = await RequestAoE4World.GetLatestGame(strPlayerID);
-            if (reLatestGame.Code == IConstants.CODE_200)
-            {
-                List<OverlayGame> teamList = new((List<OverlayGame>)reLatestGame.Data);
-                return teamList;
-            } else
-            {
-                return [];
-            }
+            _ = RequestAoE4World.GetPlayerLastGame(strPlayerID);
+            //if (reLatestGame.Code == IConstants.CODE_200)
+            //{
+            //    List<OverlayGame> teamList = new((List<OverlayGame>)reLatestGame.Data);
+            //    return teamList;
+            //} else
+            //{
+            //    return [];
+            //}
         }
 
         private void BtnBind_Click(object sender, RoutedEventArgs e)
         {
-            ShowOSDInfo();
+            GetLastGame(GetPlayerSearchText());
+            //ShowOSDInfo();
         }
 
-        private async void ShowOSDInfo()
-        {
-            var strPlayerID = this.GetPlayerSearchText();
-            // ��ȡ���һ����Ϸ����Ϣ
-            List<OverlayGame> teamList = await this.GetLastGame(strPlayerID);
-            // ����Ƿ��ȡ�ɹ�
-            if (teamList.Count > 0)
-            {
-                Frame.Navigate(typeof(PageOSDSetting), teamList);
-                Logger.Info("����ҳɹ�");
-            }
+        //private async void ShowOSDInfo()
+        //{
+        //    var strPlayerID = this.GetPlayerSearchText();
+        //    // 获取玩家最近一场游戏信息
+        //    List<OverlayGame> teamList = await this.GetLastGame(strPlayerID);
+        //    // 判断是否有数据
+        //    if (teamList.Count > 0)
+        //    {
+        //        Frame.Navigate(typeof(PageOSDSetting), teamList);
+        //    }
 
-            //// �رվɵĸ���
-            //overlayWindow?.Close();
-            //// �����µĸ���
-            //overlayWindow = new(teamList);
-            //// ��ʾ����
-            //boolOverlayShow = true;
-            //overlayWindow.Show();
-        }
+        //    //// 
+        //    //overlayWindow?.Close();
+        //    //// 
+        //    //overlayWindow = new(teamList);
+        //    //// 
+        //    //boolOverlayShow = true;
+        //    //overlayWindow.Show();
+        //}
     }
 
     public class StringToUriConverter : IValueConverter
