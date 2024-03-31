@@ -23,6 +23,7 @@ namespace AoE4GameBox.Model
         public bool Ongoing { get; set; } = false;
         public bool JustFinished { get; set; } = false;
         public TeamMemberInfo[] TeamMembers { get; set; } = [];
+        public int TeamCount { get; set; } = 0;
 
         public GameLast()
         {
@@ -45,9 +46,10 @@ namespace AoE4GameBox.Model
             Ongoing = false;
             JustFinished = false;
             TeamMembers = [];
+            TeamCount = 0;
         }
 
-        public GameLast(int profileId, int gameId, DateTimeOffset startedAt, DateTimeOffset updatedAt, int duration, string map, string kind, string leaderboard, string mmrLeaderboard, int season, string server, int patch, int avarageRating, int avarageRatingDeviation, int avarageMmr, int avarageMmrDeviation, bool ongoing, bool justFinished, TeamMemberInfo[] teamMembers)
+        public GameLast(int profileId, int gameId, DateTimeOffset startedAt, DateTimeOffset updatedAt, int duration, string map, string kind, string leaderboard, string mmrLeaderboard, int season, string server, int patch, int avarageRating, int avarageRatingDeviation, int avarageMmr, int avarageMmrDeviation, bool ongoing, bool justFinished, TeamMemberInfo[] teamMembers, int teamCount)
         {
             ProfileId = profileId;
             GameId = gameId;
@@ -68,6 +70,7 @@ namespace AoE4GameBox.Model
             Ongoing = ongoing;
             JustFinished = justFinished;
             TeamMembers = teamMembers;
+            TeamCount = teamCount;
         }
     }
 }

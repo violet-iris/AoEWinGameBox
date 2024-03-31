@@ -2,6 +2,7 @@
 {
     public class TeamMemberInfo
     {
+        public int TeamId { get; set; } = 0;
         public string Civilization { get; set; } = "Default";
         public string Result { get; set; } = "Default";
         public int Rating { get; set; } = 0;
@@ -10,10 +11,11 @@
         public int MmrDiff { get; set; } = 0;
         public string InputType { get; set; } = "Default";
         public Player Player { get; set; } = new Player();
-        public ClassGameModeInfo Modes { get; set; } = new ClassGameModeInfo();
+        public ClassGameModeInfo[] Modes { get; set; } = [];
 
         public TeamMemberInfo()
         {
+            TeamId = 0;
             Civilization = "Default";
             Result = "Default";
             Rating = 0;
@@ -22,11 +24,12 @@
             MmrDiff = 0;
             InputType = "Default";
             Player = new Player();
-            Modes = new ClassGameModeInfo();
+            Modes = [];
         }
 
-        public TeamMemberInfo(string civilization, string result, int rating, int ratingDiff, int mmr, int mmrDiff, string inputType, Player player, ClassGameModeInfo modes)
+        public TeamMemberInfo(int teamId, string civilization, string result, int rating, int ratingDiff, int mmr, int mmrDiff, string inputType, Player player, ClassGameModeInfo[] modes)
         {
+            TeamId = teamId;
             Civilization = civilization;
             Result = result;
             Rating = rating;
@@ -56,9 +59,9 @@
         public int DropsCount { get; set; } = 0;
         public string LastGameAt { get; set; } = "Default";
         public int WinRate { get; set; } = 0;
-        public ClassRatingHistory RatingHistory { get; set; } = new ClassRatingHistory();
+        public ClassRatingHistory[] RatingHistory { get; set; } = [];
         public int Season { get; set; } = 7;
-        public ClassPreviousSeasons PreviousSeasons { get; set; } = new ClassPreviousSeasons();
+        public ClassPreviousSeasons[] PreviousSeasons { get; set; } = [];
 
         public ClassGameModeInfo()
         {
@@ -77,12 +80,12 @@
             DropsCount = 0;
             LastGameAt = "Default";
             WinRate = 0;
-            RatingHistory = new ClassRatingHistory();
+            RatingHistory = [];
             Season = 7;
-            PreviousSeasons = new ClassPreviousSeasons();
+            PreviousSeasons = [];
         }
 
-        public ClassGameModeInfo(string modeName, int rating, int maxRating, int maxRating7d, int maxRating1m, int rank, string rankLevel, int streak, int gamesCount, int winsCount, int lossesCount, int disputesCount, int dropsCount, string lastGameAt, int winRate, ClassRatingHistory ratingHistory, int season, ClassPreviousSeasons previousSeasons)
+        public ClassGameModeInfo(string modeName, int rating, int maxRating, int maxRating7d, int maxRating1m, int rank, string rankLevel, int streak, int gamesCount, int winsCount, int lossesCount, int disputesCount, int dropsCount, string lastGameAt, int winRate, ClassRatingHistory[] ratingHistory, int season, ClassPreviousSeasons[] previousSeasons)
         {
             ModeName = modeName;
             Rating = rating;

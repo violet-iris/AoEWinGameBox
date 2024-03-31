@@ -109,25 +109,57 @@ namespace AoE4GameBox.Tools
                     Logger.Info(jsonObject);
 
                     // 提取字符串字段
-                    string GameId = (string)jsonObject["game_id"];
-                    string StartedAt = (string)jsonObject["started_at"];
-                    string UpdatedAt = (string)jsonObject["updated_at"];
-                    string Duration = (string)jsonObject["duration"];
-                    string Map = (string)jsonObject["map"];
-                    string Kind = (string)jsonObject["kind"];
-                    string Leaderboard = (string)jsonObject["leaderboard"];
-                    string MmrLeaderboard = (string)jsonObject["mmr_leaderboard"];
-                    string Season = (string)jsonObject["season"];
-                    string Server = (string)jsonObject["server"];
-                    string Patch = (string)jsonObject["patch"];
-                    string AvarageRating = (string)jsonObject["avarage_rating"];
-                    string AvarageRatingDeviation = (string)jsonObject["avarage_rating_deviation"];
-                    string AvarageMmr = (string)jsonObject["avarage_mmr"];
-                    string AvarageMmrDeviation = (string)jsonObject["avarage_mmr_deviation"];
-                    string Ongoing = (string)jsonObject["ongoing"];
-                    string JustFinished = (string)jsonObject["just_finished"];
-
-                    Logger.Info(jsonObject["teams"].Count());
+                    string gameId = (string)jsonObject["game_id"];
+                    string startedAt = (string)jsonObject["started_at"];
+                    string updatedAt = (string)jsonObject["updated_at"];
+                    string duration = (string)jsonObject["duration"];
+                    string map = (string)jsonObject["map"];
+                    string kind = (string)jsonObject["kind"];
+                    string leaderboard = (string)jsonObject["leaderboard"];
+                    string mmrLeaderboard = (string)jsonObject["mmr_leaderboard"];
+                    string season = (string)jsonObject["season"];
+                    string server = (string)jsonObject["server"];
+                    string patch = (string)jsonObject["patch"];
+                    string avarageRating = (string)jsonObject["avarage_rating"];
+                    string avarageRatingDeviation = (string)jsonObject["avarage_rating_deviation"];
+                    string avarageMmr = (string)jsonObject["avarage_mmr"];
+                    string avarageMmrDeviation = (string)jsonObject["avarage_mmr_deviation"];
+                    string ongoing = (string)jsonObject["ongoing"];
+                    string justFinished = (string)jsonObject["just_finished"];
+                    //int teamCount = jsonObject["teams"].Count();
+                    JArray teams = (JArray)jsonObject["teams"];
+                    foreach (JArray teamArray in teams.Cast<JArray>())
+                    {
+                        foreach (JObject memberObject in teamArray.Cast<JObject>())
+                        {
+                            // 处理 memberObject 并创建 TeamMemberInfo 对象
+                            TeamMemberInfo teamMemberInfo = new TeamMemberInfo
+                            {
+                                TeamId = (int)memberObject["team_id"],
+                                Civilization = (string)memberObject["civilization"],
+                                Result = (string)memberObject["result"],
+                                Rating = (int)memberObject["rating"],
+                                RatingDiff = (int)memberObject["rating_diff"],
+                                Mmr = (int)memberObject["mmr"],
+                                MmrDiff = (int)memberObject["mmr_diff"],
+                                InputType = (string)memberObject["input_type"],
+                                Player = new Player
+                                {
+                                    Name = (string)memberObject["player"]["name"],
+                                    ProfileId = (int)memberObject["player"]["profile_id"],
+                                    SteamId = (string)memberObject["player"]["steam_id"],
+                                    CountryArea = (string)memberObject["player"]["country"],
+                                    SiteUrl = (string)memberObject["player"]["site_url"],
+                                    Avatars = new Avatar
+                                    {
+                                        Small = (string)memberObject["player"]["avatars"]["small"],
+                                        Medium = (string)memberObject["player"]["avatars"]["medium"],
+                                        Full = (string)memberObject["player"]["avatars"]["full"]
+                                    }
+                                },
+                            };
+                        }
+                    }
 
                     //// 将 JSON 数据转换为 List<OverlayGame>
                     //List<GameLast> teamList = [];
